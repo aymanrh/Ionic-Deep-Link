@@ -1,5 +1,8 @@
 {
   "name": "DeepLinkTut",
-  "integrations": {},
+  "integrations": {
+    "cordova": {},
+    "capacitor": {}
+  },
   "type": "angular"
 }
