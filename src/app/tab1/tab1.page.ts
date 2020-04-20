@@ -1,42 +1,16 @@
 import { Component } from '@angular/core';
-import {  InAppBrowserOptions, InAppBrowser } from '@ionic-native/in-app-browser/ngx';
-
+import { Plugins } from '@capacitor/core';
+const { Browser } = Plugins;
 @Component({
   selector: 'app-tab1',
   templateUrl: 'tab1.page.html',
   styleUrls: ['tab1.page.scss']
 })
 export class Tab1Page {
-  options : InAppBrowserOptions = {
-    location : 'yes',//Or 'no' 
-    hidden : 'no', //Or  'yes'
-    clearcache : 'yes',
-    clearsessioncache : 'yes',
-    zoom : 'yes',//Android only ,shows browser zoom controls 
-    hardwareback : 'yes',
-    mediaPlaybackRequiresUserAction : 'no',
-    shouldPauseOnSuspend : 'no', //Android only 
-    closebuttoncaption : 'Close', //iOS only
-    disallowoverscroll : 'no', //iOS only 
-    toolbar : 'yes', //iOS only 
-    enableViewportScale : 'no', //iOS only 
-    allowInlineMediaPlayback : 'no',//iOS only 
-    presentationstyle : 'pagesheet',//iOS only 
-    fullscreen : 'yes',//Windows only    
-};
-  constructor(private theInAppBrowser: InAppBrowser) {}
+ 
+  constructor() {}
 
-  public openWithSystemBrowser(url : string){
-    let target = "_system";
-    const browser = this.theInAppBrowser.create(url,target,this.options);
+  public async openBrowser(url : string){
+    await Browser.open({ url: url });
 }
-public openWithInAppBrowser(url : string){
-    let target = "_blank";
-   this.theInAppBrowser.create(url,target,this.options);
-
-}
-public openWithCordovaBrowser(url : string){
-    let target = "_self";
-   this.theInAppBrowser.create(url,target,this.options);
-}  
 }
